@@ -12,13 +12,24 @@
       "name": "MIT"
     }
   },
-  "security": [],
+  "security": [
+    {
+      "APIKey": []
+    }
+  ],
   "servers": [],
   "paths": {},
   "components": {
     "links": {},
     "callbacks": {},
-    "schemas": {}
+    "schemas": {},
+    "securitySchemes": {
+      "APIKey": {
+        "type": "apiKey",
+        "name": "api_key",
+        "in": "query"
+      }
+    }
   },
   "tags": []
 }
