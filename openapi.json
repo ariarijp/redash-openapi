@@ -61,7 +61,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "type": "object"
+                  "$ref": "#/components/schemas/Queries"
                 }
               }
             }
@@ -73,7 +73,148 @@
   "components": {
     "links": {},
     "callbacks": {},
-    "schemas": {},
+    "schemas": {
+      "Queries": {
+        "properties": {
+          "count": {
+            "type": "integer"
+          },
+          "page": {
+            "type": "integer"
+          },
+          "page_size": {
+            "type": "integer"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Query"
+            }
+          }
+        }
+      },
+      "Query": {
+        "properties": {
+          "last_modified_by_id": {
+            "type": "integer"
+          },
+          "latest_query_data_id": {
+            "type": "integer"
+          },
+          "schedule": {
+            "type": "integer"
+          },
+          "is_archived": {
+            "type": "boolean"
+          },
+          "retrieved_at": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "string"
+          },
+          "user": {
+            "$ref": "#/components/schemas/User"
+          },
+          "query": {
+            "type": "string"
+          },
+          "is_draft": {
+            "type": "boolean"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "description": {
+            "type": "string"
+          },
+          "runtime": {
+            "type": "float"
+          },
+          "name": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "dateTime"
+          },
+          "version": {
+            "type": "integer"
+          },
+          "query_hash": {
+            "type": "string"
+          },
+          "api_key": {
+            "type": "string"
+          },
+          "options": {
+            "$ref": "#/components/schemas/Options"
+          },
+          "data_source_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "User": {
+        "properties": {
+          "auth_type": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "dateTime"
+          },
+          "name": {
+            "type": "string"
+          },
+          "gravatar_url": {
+            "type": "string"
+          },
+          "updated_at": {
+            "type": "dateTime"
+          },
+          "id": {
+            "type": "integer"
+          },
+          "groups": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "email": {
+            "type": "string"
+          }
+        }
+      },
+      "Options": {
+        "properties": {
+          "parameters": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Parameter"
+            }
+          }
+        }
+      },
+      "Parameter": {
+        "properties": {
+          "global": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "value": {
+            "type": "string"
+          },
+          "title": {
+            "type": "string"
+          }
+        }
+      }
+    },
     "securitySchemes": {
       "APIKey": {
         "type": "apiKey",
