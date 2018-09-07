@@ -61,7 +61,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Queries"
+                  "$ref": "#/components/schemas/QueriesResponse"
                 }
               }
             }
@@ -113,7 +113,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Job"
+                  "$ref": "#/components/schemas/JobResponse"
                 }
               }
             }
@@ -139,7 +139,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Job"
+                  "$ref": "#/components/schemas/JobResponse"
                 }
               }
             }
@@ -173,7 +173,7 @@
             "content": {
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/QueryResult"
+                  "$ref": "#/components/schemas/QueryResultResponse"
                 }
               }
             }
@@ -186,7 +186,7 @@
     "links": {},
     "callbacks": {},
     "schemas": {
-      "Queries": {
+      "QueriesResponse": {
         "properties": {
           "count": {
             "type": "integer"
@@ -326,71 +326,75 @@
           }
         }
       },
-      "Job": {
+      "JobResponse": {
         "properties": {
           "job": {
-            "type": "object",
-            "properties": {
-              "status": {
-                "type": "integer"
-              },
-              "error": {
-                "type": "string"
-              },
-              "id": {
-                "type": "string"
-              },
-              "query_result_id": {
-                "type": "integer"
-              },
-              "updated_at": {
-                "type": "dateTime"
-              }
-            }
+            "$ref": "#/components/schemas/Job"
           }
         }
       },
-      "QueryResult": {
+      "Job": {
+        "properties": {
+          "status": {
+            "type": "integer"
+          },
+          "error": {
+            "type": "string"
+          },
+          "id": {
+            "type": "string"
+          },
+          "query_result_id": {
+            "type": "integer"
+          },
+          "updated_at": {
+            "type": "dateTime"
+          }
+        }
+      },
+      "QueryResultResponse": {
         "properties": {
           "query_result": {
-            "type": "object",
-            "properties": {
-              "retrieved_at": {
-                "type": "dateTime"
-              },
-              "query_hash": {
-                "type": "string"
-              },
-              "query": {
-                "type": "string"
-              },
-              "runtime": {
-                "type": "float"
-              },
-              "data": {
-                "type": "object",
-                "properties": {
-                  "rows": {
-                    "type": "array",
-                    "items": {
-                      "type": "object"
-                    }
-                  },
-                  "columns": {
-                    "type": "array",
-                    "items": {
-                      "$ref": "#/components/schemas/Column"
-                    }
-                  }
-                }
-              }
-            }
+            "$ref": "#/components/schemas/QueryResult"
           },
           "id": {
             "type": "integer"
           },
           "data_source_id": {
             "type": "integer"
+          }
+        }
+      },
+      "QueryResult": {
+        "properties": {
+          "retrieved_at": {
+            "type": "dateTime"
+          },
+          "query_hash": {
+            "type": "string"
+          },
+          "query": {
+            "type": "string"
+          },
+          "runtime": {
+            "type": "float"
+          },
+          "data": {
+            "type": "object",
+            "properties": {
+              "rows": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "columns": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/Column"
+                }
+              }
+            }
           }
         }
       },
