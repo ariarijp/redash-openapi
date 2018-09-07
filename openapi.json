@@ -146,6 +146,40 @@
           }
         }
       }
+    },
+    "/api/queries/{query_id}/results/{query_result_id}.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "query_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "query_result_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An object of query result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryResult"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -313,6 +347,63 @@
                 "type": "dateTime"
               }
             }
+          }
+        }
+      },
+      "QueryResult": {
+        "properties": {
+          "query_result": {
+            "type": "object",
+            "properties": {
+              "retrieved_at": {
+                "type": "dateTime"
+              },
+              "query_hash": {
+                "type": "string"
+              },
+              "query": {
+                "type": "string"
+              },
+              "runtime": {
+                "type": "float"
+              },
+              "data": {
+                "type": "object",
+                "properties": {
+                  "rows": {
+                    "type": "array",
+                    "items": {
+                      "type": "object"
+                    }
+                  },
+                  "columns": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/components/schemas/Column"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "id": {
+            "type": "integer"
+          },
+          "data_source_id": {
+            "type": "integer"
+          }
+        }
+      },
+      "Column": {
+        "properties": {
+          "friendly_name": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
           }
         }
       }
