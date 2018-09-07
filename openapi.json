@@ -94,6 +94,32 @@
           }
         }
       }
+    },
+    "/api/queries/{id}/refresh": {
+      "post": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An object of job",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Job"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -237,6 +263,30 @@
           },
           "title": {
             "type": "string"
+          }
+        }
+      },
+      "Job": {
+        "properties": {
+          "job": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "integer"
+              },
+              "error": {
+                "type": "string"
+              },
+              "id": {
+                "type": "string"
+              },
+              "query_result_id": {
+                "type": "integer"
+              },
+              "updated_at": {
+                "type": "dateTime"
+              }
+            }
           }
         }
       }
