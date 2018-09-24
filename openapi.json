@@ -356,17 +356,17 @@
         "properties": {
           "query_result": {
             "$ref": "#/components/schemas/QueryResult"
-          },
-          "id": {
-            "type": "integer"
-          },
-          "data_source_id": {
-            "type": "integer"
           }
         }
       },
       "QueryResult": {
         "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "data_source_id": {
+            "type": "integer"
+          },
           "retrieved_at": {
             "type": "dateTime"
           },
