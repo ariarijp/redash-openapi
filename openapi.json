@@ -231,6 +231,25 @@
           }
         }
       }
+    },
+    "/api/data_sources": {
+      "get": {
+        "responses": {
+          "200": {
+            "description": "A list of data sources",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/DataSource"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -314,6 +333,31 @@
           },
           "data_source_id": {
             "type": "integer"
+          }
+        }
+      },
+      "DataSource": {
+        "properties": {
+          "id": {
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "paused_reason": {
+            "type": "string"
+          },
+          "paused": {
+            "type": "boolean"
+          },
+          "syntax": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "view_only": {
+            "type": "boolean"
           }
         }
       },
