@@ -242,7 +242,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/DataSource"
+                    "$ref": "#/components/schemas/DataSourceListItem"
                   }
                 }
               }
@@ -336,7 +336,7 @@
           }
         }
       },
-      "DataSource": {
+      "DataSourceListItem": {
         "properties": {
           "id": {
             "type": "integer"
