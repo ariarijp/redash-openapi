@@ -250,6 +250,33 @@
           }
         }
       }
+    },
+    "/api/data_sources/{id}": {
+      "get": {
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An object of data source",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "$ref": "#/components/schemas/DataSourceDetail"
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -358,6 +385,37 @@
           },
           "view_only": {
             "type": "boolean"
+          }
+        }
+      },
+      "DataSource": {
+        "properties": {
+          "scheduled_queue_name": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "paused_reason": {
+            "type": "string"
+          },
+          "queue_name": {
+            "type": "string"
+          },
+          "syntax": {
+            "type": "string"
+          },
+          "paused": {
+            "type": "boolean"
+          },
+          "options": {
+            "type": "object"
+          },
+          "groups": {
+            "type": "object"
+          },
+          "id": {
+            "type": "integer"
           }
         }
       },
