@@ -147,6 +147,32 @@
         }
       }
     },
+    "/api/query_results/{query_result_id}.json": {
+      "get": {
+        "parameters": [
+          {
+            "name": "query_result_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "An object of query result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/QueryResultResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/queries/{query_id}/results/{query_result_id}.json": {
       "get": {
         "parameters": [
@@ -204,7 +230,7 @@
                   },
                   "max_age": {
                     "type": "integer",
-                    "default": -1
+                    "default": 0
                   }
                 }
               }
